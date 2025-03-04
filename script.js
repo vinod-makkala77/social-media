@@ -58,14 +58,11 @@ function showProfiles(id){
 function showTodo(id){
     let str = "<h3>To Dos</h3>"
     //console.log(`https://jsonplaceholder.typicode.com/posts/userId=${id}`)
-    fetch(`https://jsonplaceholder.typicode.com/todos/?id=${id}`)
+    fetch(`https://jsonplaceholder.typicode.com/todos/?userId=${id}`)
     .then((res)=>res.json())
     .then((data)=>{
       data && data.map((value)=>{
-        str+=`<div>
-        <b>${value.title}</b>
-        <p>${value.completed}</p>
-        </div>`;
+            str += `<div><input type='checkbox' ${value.completed && "checked"}>${value.title}</div>`;
       });
       content.innerHTML = str;
     })
